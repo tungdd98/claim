@@ -30,17 +30,19 @@ const theme = createTheme({
 });
 
 const App: FC = () => {
-	const [open, setOpen] = useState(false);
+	const [confirm, setConfirm] = useState(0);
+	const [clickMe, setClickMe] = useState(0);
 
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<Box>
-				{open ? "Confirm" : "Click Me"}
+				<Box>Confirm: {confirm}</Box>
+				<Box>Click Me: {clickMe}</Box>
 				<Draggable handle="strong">
 					<div>
 						<strong>Drag</strong>
-						<Button variant="contained" onClick={() => setOpen(true)}>
+						<Button variant="contained" onClick={() => setConfirm(prev => prev + 1)}>
 							Click Me
 						</Button>
 					</div>
@@ -48,7 +50,7 @@ const App: FC = () => {
 				<Draggable handle="strong">
 					<div>
 						<strong>Drag</strong>
-						<Button variant="contained" onClick={() => setOpen(false)}>
+						<Button variant="contained" onClick={() => setClickMe(prev => prev + 1)}>
 							Confirm
 						</Button>
 					</div>
